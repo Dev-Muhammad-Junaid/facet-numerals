@@ -147,4 +147,4 @@ The finishes are SVG filters in `index.html` (`#f-gold`, `#f-graphite`, `#f-pear
 
 ## Credits
 
-The digits started as an image generated with ChatGPT, were converted to SVG with [QuiverAI Arrow](https://quiver.ai) on a paid plan, then audited, normalized and hand-fixed in this repo (see `tools/patches.py`). Versions 0.1.0 and 0.1.1 on npm were published under `MIT AND CC-BY-NC-4.0` before the license was simplified; 0.2.0 onward is MIT throughout.
+The digits started as an image generated with ChatGPT, were converted to SVG with [QuiverAI Arrow](https://quiver.ai) on a paid plan, then audited, normalized and hand-fixed in this repo (see `tools/patches.py`).
