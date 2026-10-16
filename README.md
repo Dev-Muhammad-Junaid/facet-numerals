@@ -1,22 +1,82 @@
 # Facet Numerals
 
-![Facet Numerals cycling through eight motions: odometer roll, split flip, drop and settle, focus snap, tick pop, facet assemble, line draw to fill and glint sweep](media/motions.gif)
+![Facet Numerals cycling through eight motions: odometer roll, split flip, drop and settle, focus snap, tick pop, facet assemble, line draw to fill and glint sweep](https://raw.githubusercontent.com/Dev-Muhammad-Junaid/facet-numerals/main/media/motions.gif)
 
 Ten faceted, gem-style SVG digits, audited for precision and rebuilt on a shared tabular grid, plus a motion lab for trying them out.
 
-**Live lab: https://dev-muhammad-junaid.github.io/facet-numerals/**
+**Live lab: https://dev-muhammad-junaid.github.io/facet-numerals/** · [Component examples](https://dev-muhammad-junaid.github.io/facet-numerals/examples/)
+
+```bash
+npm i facet-numerals
+```
 
 In the lab you can type a number, then choose one of seven motions and one of six finishes. You can play the motion at 0.25×–2× speed to check individual frames, and switch on guide lines to confirm the digits stay on the baseline while they move.
+
+## Use it in your project
+
+The package ships a `<facet-number>` web component with no dependencies, so it works in plain HTML, React, Vue, Svelte or anything else that renders HTML.
+
+```js
+import 'facet-numerals/define';
+```
+
+```html
+<facet-number value="2026" motion="roll" glint style="--facet-height: 120px"></facet-number>
+```
+
+Change `value` (the attribute or the property) and the number animates to it. No build step? Load it from a CDN:
+
+```html
+<script type="module" src="https://cdn.jsdelivr.net/npm/facet-numerals/src/define.js"></script>
+```
+
+### Attributes
+
+| Attribute | Values | Default |
+| --- | --- | --- |
+| `value` | Any number. Non-digits are ignored. | `0` |
+| `motion` | `roll` `flip` `drop` `focus` `pop` `assemble` `draw` `fade` `none` | `roll` |
+| `finish` | `gem` `gold` `graphite` `pearl` `wire` `glass` | `gem` |
+| `glint` | Present = sweep a highlight across the number after each change | off |
+| `pad` | Minimum number of digits, padded with zeros (`pad="6"` for a clock) | `0` |
+| `speed` | Playback rate, for example `0.25` to slow motions down | `1` |
+
+Size it with `--facet-height` (default `1.4em`, so it sits inline with text) or a plain CSS `height`. Each digit is 0.7 times as wide as it is tall. Other custom properties: `--facet-gap`, `--facet-wire-color`, `--facet-glass-edge`, `--facet-draw-color`. The row of digits is exposed as `::part(number)`.
+
+### JavaScript
+
+```js
+const el = document.querySelector('facet-number');
+await el.set(4815, { motion: 'flip', glint: true }); // resolves when every digit has settled
+await el.glint();
+el.addEventListener('facet-settle', e => console.log(e.detail.value));
+```
+
+The element sets `role="img"` and an `aria-label` with the current value, so screen readers read the number. When the viewer has reduced motion turned on, every motion becomes a 150 ms crossfade and the glint is skipped.
+
+### Server rendering and static SVG
+
+```js
+import { digitSVG, numberSVG } from 'facet-numerals';
+
+digitSVG(7, { finish: 'gold', title: '7' }); // one standalone <svg> string, IDs unique per call
+numberSVG(2026);                             // ['<svg…>', '<svg…>', …]
+```
+
+Both run in Node with no DOM. The files are also importable directly as `facet-numerals/svg/0.svg` … `9.svg`, and the motion tokens as `facet-numerals/tokens.css`. TypeScript types are included.
 
 ## What's in here
 
 | Path | What it is |
 | --- | --- |
+| `src/` | The npm package: `<facet-number>`, `digitSVG()`, types. |
+| `examples/` | Component examples page. |
+| `tokens.css` | Motion tokens as CSS custom properties. |
 | `index.html` | The motion lab. One file, no build step, no dependencies besides Google Fonts. |
-| `digits.js` | The ten digits packaged as data for the page. Generated, don't edit. |
+| `digits.js`, `src/digits.js` | The ten digits as data for the lab and the package. Generated, don't edit. |
 | `svg/0.svg` … `svg/9.svg` | Normalized digits, ready to use. |
 | `svg/original/` | The digits as first generated, kept for the audit. |
-| `tools/normalize.py` | Rebuilds `svg/` and `digits.js` from `svg/original/`. |
+| `tools/normalize.py` | Rebuilds `svg/`, `digits.js` and `src/digits.js` from `svg/original/`. |
 | `tools/capture-gif.js` | Renders `media/motions.gif` from the lab, frame by frame. |
 | `media/motions.gif` | The motion reel at the top of this README. |
 | `preview.png` | Static social preview image. |
@@ -79,7 +139,10 @@ The finishes are SVG filters in `index.html` (`#f-gold`, `#f-graphite`, `#f-pear
 
 ## License
 
-- **Code** (`index.html`, `tools/`): [MIT](LICENSE)
-- **Digit artwork** (`svg/`, `digits.js`, `media/`, `preview.png`): [CC BY-NC 4.0](LICENSE-ASSETS.md). Remix freely for non-commercial use, with credit.
+The npm package's license field is `MIT AND CC-BY-NC-4.0`: the component code is MIT, and the digit artwork bundled with it is non-commercial.
+
+
+- **Code** (`src/index.js`, `src/define.js`, `index.html`, `examples/`, `tools/`): [MIT](LICENSE)
+- **Digit artwork** (`svg/`, `digits.js`, `src/digits.js`, `media/`, `preview.png`): [CC BY-NC 4.0](LICENSE-ASSETS.md). Remix freely for non-commercial use, with credit.
 
 The digits were generated with [QuiverAI Arrow](https://quiver.ai) on its free tier, which allows only non-commercial use of its output, so the artwork can't be licensed for commercial use. Replace the artwork with your own and you can use the code for anything.

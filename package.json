@@ -1,0 +1,24 @@
+{
+  "name": "facet-numerals",
+  "version": "0.1.0",
+  "description": "Faceted gem-style SVG digits on a tabular grid, with a <facet-number> web component: 7 motions, 6 finishes, glint, reduced-motion aware.",
+  "type": "module",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": { "types": "./src/index.d.ts", "default": "./src/index.js" },
+    "./define": { "types": "./src/define.d.ts", "default": "./src/define.js" },
+    "./tokens.css": "./tokens.css",
+    "./svg/*": "./svg/*",
+    "./package.json": "./package.json"
+  },
+  "files": ["src", "svg/*.svg", "tokens.css", "LICENSE", "LICENSE-ASSETS.md"],
+  "sideEffects": ["./src/define.js", "*.css"],
+  "license": "MIT AND CC-BY-NC-4.0",
+  "author": "Dev-Muhammad-Junaid",
+  "homepage": "https://dev-muhammad-junaid.github.io/facet-numerals/",
+  "repository": { "type": "git", "url": "git+https://github.com/Dev-Muhammad-Junaid/facet-numerals.git" },
+  "bugs": { "url": "https://github.com/Dev-Muhammad-Junaid/facet-numerals/issues" },
+  "keywords": ["svg", "digits", "numbers", "counter", "odometer", "web-component", "custom-element", "animation", "motion", "web-animations"]
+}

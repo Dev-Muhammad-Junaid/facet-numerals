@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>facet-number examples</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; background: #07080F; color: #E8EAF7; font: 15px/1.5 system-ui, sans-serif; }
+  main { max-width: 880px; margin: 0 auto; padding: 32px 16px 80px; display: grid; gap: 28px; }
+  h1 { margin: 0; font-size: 26px; }
+  section { display: grid; gap: 12px; padding: 20px; border: 1px solid #20244A; border-radius: 6px; }
+  section.paper { background: #ECEEF6; color: #20244A; }
+  code { font: 13px ui-monospace, Menlo, monospace; color: #9FE8FF; }
+  .paper code { color: #3B3FA0; }
+  .row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+  button { font: inherit; padding: 6px 12px; border-radius: 4px; border: 1px solid #2C3163; background: #151833; color: inherit; cursor: pointer; }
+  p { margin: 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>&lt;facet-number&gt; examples</h1>
+
+  <section>
+    <code>&lt;facet-number value="2026" motion="roll" glint style="--facet-height:120px"&gt;</code>
+    <div class="row">
+      <facet-number id="hero" value="2026" motion="roll" glint style="--facet-height:120px"></facet-number>
+    </div>
+    <div class="row">
+      <button data-m="roll">roll</button><button data-m="flip">flip</button><button data-m="drop">drop</button>
+      <button data-m="focus">focus</button><button data-m="assemble">assemble</button><button data-m="draw">draw</button>
+      <button id="inc">+1 (pop)</button><button id="glint">glint()</button>
+    </div>
+    <p id="log"><code>facet-settle</code> events appear here.</p>
+  </section>
+
+  <section>
+    <code>finish="gem | gold | graphite | wire | glass"</code>
+    <div class="row">
+      <facet-number value="01" style="--facet-height:64px"></facet-number>
+      <facet-number value="02" finish="gold" style="--facet-height:64px"></facet-number>
+      <facet-number value="03" finish="graphite" style="--facet-height:64px"></facet-number>
+      <facet-number value="04" finish="wire" style="--facet-height:64px"></facet-number>
+      <facet-number value="05" finish="glass" style="--facet-height:64px"></facet-number>
+    </div>
+  </section>
+
+  <section class="paper">
+    <code>finish="pearl"</code> on a light background, and inline with text at the default 1.4em:
+    <div class="row">
+      <facet-number value="789" finish="pearl" style="--facet-height:64px"></facet-number>
+      <span style="font-size:22px">Order <facet-number value="42" finish="pearl"></facet-number> is ready</span>
+    </div>
+  </section>
+
+  <section>
+    <code>pad="6" motion="flip"</code> — a ticking clock
+    <div class="row"><facet-number id="clock" pad="6" motion="flip" style="--facet-height:72px"></facet-number></div>
+  </section>
+</main>
+
+<script type="module">
+  import '../src/define.js';
+  const hero = document.getElementById('hero');
+  const rand = () => String(1000 + Math.floor(Math.random() * 9000));
+  document.querySelectorAll('[data-m]').forEach(b =>
+    b.addEventListener('click', () => hero.set(rand(), { motion: b.dataset.m })));
+  document.getElementById('inc').addEventListener('click', () => hero.set(+hero.value + 1, { motion: 'pop', glint: false }));
+  document.getElementById('glint').addEventListener('click', () => hero.glint());
+  hero.addEventListener('facet-settle', e => {
+    document.getElementById('log').innerHTML = `<code>facet-settle</code> → ${e.detail.value}`;
+  });
+  const clock = document.getElementById('clock');
+  const tick = () => { const d = new Date(); clock.value = [d.getHours(), d.getMinutes(), d.getSeconds()].map(n => String(n).padStart(2, '0')).join(''); };
+  tick(); setInterval(tick, 1000);
+</script>
+</body>
+</html>

@@ -7,7 +7,7 @@ This covers:
 
 - `svg/0.svg` … `svg/9.svg` (normalized digits)
 - `svg/original/0.svg` … `svg/original/9.svg` (digits as first generated)
-- `digits.js` (the same artwork, packaged for the page)
+- `digits.js` and `src/digits.js` (the same artwork, packaged for the lab and the npm package)
 - `media/motions.gif` and `preview.png`
 
 You may copy, remix, transform and build on the artwork for **non-commercial** purposes,

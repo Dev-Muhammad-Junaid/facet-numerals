@@ -1,50 +1,50 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="56" height="80" fill="none" viewBox="0 0 56 80">
   <defs>
-    <linearGradient id="d8g3" x1="27.83" x2="51.68" y1="10.42" y2="10.42" gradientUnits="userSpaceOnUse">
+    <linearGradient id="d8g0" x1="27.83" x2="51.68" y1="10.42" y2="10.42" gradientUnits="userSpaceOnUse">
       <stop stop-color="#61D9FF" offset="0"/>
       <stop stop-color="#11C4FF" offset=".6233"/>
       <stop stop-color="#00B6FF" offset="1"/>
     </linearGradient>
-    <linearGradient id="d8g5" x1="16.16" x2="30.47" y1="14.73" y2="14.73" gradientUnits="userSpaceOnUse">
+    <linearGradient id="d8g1" x1="16.16" x2="30.47" y1="14.73" y2="14.73" gradientUnits="userSpaceOnUse">
       <stop stop-color="#00C2FF" offset="0"/>
       <stop stop-color="#33D5FF" offset=".4822"/>
       <stop stop-color="#D3FAFF" offset="1"/>
     </linearGradient>
-    <linearGradient id="d8g10" x1="48.69" x2="63.52" y1="13.93" y2="13.93" gradientUnits="userSpaceOnUse">
+    <linearGradient id="d8g2" x1="48.69" x2="63.52" y1="13.93" y2="13.93" gradientUnits="userSpaceOnUse">
       <stop stop-color="#FFDE83" offset="0"/>
       <stop stop-color="#FFBA66" offset="1"/>
     </linearGradient>
-    <linearGradient id="d8g7" x1="63.61" x2="56.42" y1="27.45" y2="27.45" gradientUnits="userSpaceOnUse">
+    <linearGradient id="d8g3" x1="63.61" x2="56.42" y1="27.45" y2="27.45" gradientUnits="userSpaceOnUse">
       <stop stop-color="#AB3DD6" offset="0"/>
       <stop stop-color="#6722CD" offset="1"/>
     </linearGradient>
-    <linearGradient id="d8g1" x1="63.95" x2="56.46" y1="55.14" y2="55.14" gradientUnits="userSpaceOnUse">
+    <linearGradient id="d8g4" x1="63.95" x2="56.46" y1="55.14" y2="55.14" gradientUnits="userSpaceOnUse">
       <stop stop-color="#A635DE" offset="0"/>
       <stop stop-color="#7527CF" offset=".5177"/>
       <stop stop-color="#6121B8" offset="1"/>
     </linearGradient>
-    <linearGradient id="d8g9" x1="50.26" x2="63.86" y1="43.01" y2="43.01" gradientUnits="userSpaceOnUse">
+    <linearGradient id="d8g5" x1="50.26" x2="63.86" y1="43.01" y2="43.01" gradientUnits="userSpaceOnUse">
       <stop stop-color="#FFEA89" offset="0"/>
       <stop stop-color="#FFB056" offset="1"/>
     </linearGradient>
-    <linearGradient id="d8g8" x1="16.02" x2="28.96" y1="43.94" y2="43.94" gradientUnits="userSpaceOnUse">
+    <linearGradient id="d8g6" x1="16.02" x2="28.96" y1="43.94" y2="43.94" gradientUnits="userSpaceOnUse">
       <stop stop-color="#00C7FF" offset="0"/>
       <stop stop-color="#2BD2FF" offset=".5373"/>
       <stop stop-color="#B7EDFF" offset="1"/>
     </linearGradient>
-    <linearGradient id="d8g4" x1="40.16" x2="40.16" y1="33.05" y2="36.72" gradientUnits="userSpaceOnUse">
+    <linearGradient id="d8g7" x1="40.16" x2="40.16" y1="33.05" y2="36.72" gradientUnits="userSpaceOnUse">
       <stop stop-color="#00B3FF" offset="0"/>
       <stop stop-color="#69E0FF" offset="1"/>
     </linearGradient>
-    <linearGradient id="d8g2" x1="39.79" x2="39.79" y1="56.82" y2="60.66" gradientUnits="userSpaceOnUse">
+    <linearGradient id="d8g8" x1="39.79" x2="39.79" y1="56.82" y2="60.66" gradientUnits="userSpaceOnUse">
       <stop stop-color="#00B3FF" offset="0"/>
       <stop stop-color="#69E0FF" offset="1"/>
     </linearGradient>
-    <linearGradient id="d8g6" x1="40" x2="40" y1="76.7" y2="69.2" gradientUnits="userSpaceOnUse">
+    <linearGradient id="d8g9" x1="40" x2="40" y1="76.7" y2="69.2" gradientUnits="userSpaceOnUse">
       <stop stop-color="#3D14C4" offset="0"/>
       <stop stop-color="#280BA3" offset="1"/>
     </linearGradient>
-    <linearGradient id="d8g0" x1="58.68" x2="50.56" y1="40.54" y2="39.72" gradientUnits="userSpaceOnUse">
+    <linearGradient id="d8g10" x1="58.68" x2="50.56" y1="40.54" y2="39.72" gradientUnits="userSpaceOnUse">
       <stop stop-color="#4412B3" offset="0"/>
       <stop stop-color="#FCD57D" offset="1"/>
     </linearGradient>
@@ -54,34 +54,34 @@
     <path d="m21.82 21.99 8.69-9.06 18.22-0.44 7.7 8.09v11.06l-6.35 7.53 6.39 7.16v13.36l-8.48 9.25-17.96 0.3-8.37-9.91v-11.27l7.3-8.27-7.19-8.38 0.05-9.42z" fill="#0B76FE"/>
     <path d="m21.66 59.33 11.46-4.34 2.57 2.52-5.66 11.73-8.37-9.91z" fill="#0D85FE"/>
     <path d="m47.99 68.94-12.95-11.58 7.41-0.6 5.38-0.38 8.64 3.31-8.48 9.25z" fill="#0B81FE"/>
-    <path d="m27.83 7.87c8.02-0.43 16.3-0.57 23.85-0.15l-2.95 4.77-18.22 0.44-2.68-5.06z" fill="url(#d8g3)"/>
-    <path d="m16.15 19.55 11.61-11.72 2.71 5.13-8.65 9.03-5.67-2.44z" fill="url(#d8g5)"/>
-    <path d="m51.69 7.69c4.39 3.9 8.25 8.1 11.83 12.24l-7.09 0.65-7.73-8.14 2.99-4.75z" fill="url(#d8g10)"/>
-    <path d="m56.43 20.58 7.08-0.65 0.1 14.76-7.18-3.05v-11.06z" fill="url(#d8g7)"/>
-    <path d="m56.47 46.33 7.49 0.7-0.23 16.28-7.26-3.62v-13.36z" fill="url(#d8g1)"/>
+    <path d="m27.83 7.87c8.02-0.43 16.3-0.57 23.85-0.15l-2.95 4.77-18.22 0.44-2.68-5.06z" fill="url(#d8g0)"/>
+    <path d="m16.15 19.55 11.61-11.72 2.71 5.13-8.65 9.03-5.67-2.44z" fill="url(#d8g1)"/>
+    <path d="m51.69 7.69c4.39 3.9 8.25 8.1 11.83 12.24l-7.09 0.65-7.73-8.14 2.99-4.75z" fill="url(#d8g2)"/>
+    <path d="m56.43 20.58 7.08-0.65 0.1 14.76-7.18-3.05v-11.06z" fill="url(#d8g3)"/>
+    <path d="m56.47 46.33 7.49 0.7-0.23 16.28-7.26-3.62v-13.36z" fill="url(#d8g4)"/>
     <path d="m56.47 59.69 7.26 3.62-12.15 12.88-3.59-7.25 8.48-9.25z" fill="#420CB0"/>
-    <path d="m30.03 69.24 17.96-0.3 3.59 7.25c-7.99 0.71-16.21 0.78-22.9 0.03l1.35-6.98z" fill="url(#d8g6)"/>
+    <path d="m30.03 69.24 17.96-0.3 3.59 7.25c-7.99 0.71-16.21 0.78-22.9 0.03l1.35-6.98z" fill="url(#d8g9)"/>
     <path d="m15.96 61.29 5.7-1.96 8.37 9.91-1.35 6.98-12.72-14.93z" fill="#0646FE"/>
     <path d="m16.01 46.51 5.65 1.55v11.27l-5.7 1.96 0.05-14.78z" fill="#0887FE"/>
     <path d="m16.19 32.59 5.58-1.18 7.19 8.18-6.5 0.33-6.27-7.33z" fill="#0543FE"/>
     <path d="m16.15 19.55 5.67 2.44-0.05 9.42-5.58 1.18-0.04-13.04z" fill="#0889FE"/>
-    <path d="m16.01 46.5 6.49-6.53 6.46-0.18-7.14 8.27-5.81-1.56z" fill="url(#d8g8)"/>
-    <path d="m50.26 39.36 8.16 1.11 5.44 6.56-7.39-0.7-6.21-6.97z" fill="url(#d8g9)"/>
+    <path d="m16.01 46.5 6.49-6.53 6.46-0.18-7.14 8.27-5.81-1.56z" fill="url(#d8g6)"/>
+    <path d="m50.26 39.36 8.16 1.11 5.44 6.56-7.39-0.7-6.21-6.97z" fill="url(#d8g5)"/>
     <path d="m56.43 31.64 7.18 3.05-5.12 5.65-8.41-1.17 6.35-7.53z" fill="#4712B7"/>
-    <path d="m50.26 39.36 8.16 1.11 0.26 0.34c-2.05 1.45-6.18-0.06-8.42-1.45z" fill="url(#d8g0)"/>
+    <path d="m50.26 39.36 8.16 1.11 0.26 0.34c-2.05 1.45-6.18-0.06-8.42-1.45z" fill="url(#d8g10)"/>
     <path d="m58.68 40.81 5.18 6.22-6.91-0.75 1.73-5.47z" fill="#FFB45D"/>
     <path d="m34.19 20.63 9.88-0.24 3.57 3.97-3.33 2.15v4.48l-1.85 2.13-7.06 0.42-2.28-2.25-3.05 0.76-0.03-7.04 4.15-4.38z" fill="#0733E0"/>
     <path d="m35.56 23.36 6.98-0.02 1.77 3.17v4.48l-1.85 2.13-6.5 0.26-2.84-2.09-0.07-4.64 2.51-3.29z" fill="#330793"/>
     <path d="m33.05 26.65 0.07 4.64 2.84 2.09 1.28-0.18-1.11-1.91 0.02-2.78-3.1-1.86z" fill="#520D8F"/>
     <path d="m44.07 20.39-1.53 2.95 1.77 3.17 3.33-2.15-3.57-3.97z" fill="#0747F9"/>
     <path d="m30.07 25.14 2.98 1.51 0.07 4.64-3.05 0.76v-6.91z" fill="#0643EF"/>
-    <path d="m35.4 33.54 7.06-0.42 1.85-1.97 3.53 1.17-3.58 4.32-10.42 0.08 1.56-3.18z" fill="url(#d8g4)"/>
+    <path d="m35.4 33.54 7.06-0.42 1.85-1.97 3.53 1.17-3.58 4.32-10.42 0.08 1.56-3.18z" fill="url(#d8g7)"/>
     <path d="m34.26 43.69 9.74-0.3 3.66 4.2-3.22 1.99v5l-1.99 2.18-6.99 0.39-2.33-2.3-3.06 1.11-0.02-7.31 4.21-4.96z" fill="#0733E0"/>
     <path d="m35.64 46.34 6.93-0.02 1.87 3.26v5l-1.99 2.18-5.07-0.04-1.42-1.92h-2.84l-0.08-4.96 2.6-3.5z" fill="#330793"/>
     <path d="m33.04 49.84 0.08 4.96h2.84l0.13 0.32 0.04-3.48-3.09-1.8z" fill="#520D8F"/>
     <path d="m44 43.39-1.43 2.93 1.87 3.26 3.22-1.99-3.66-4.2z" fill="#0747F9"/>
     <path d="m30.05 48.65 2.99 1.19 0.08 4.96-3.05 1.16-0.02-7.31z" fill="#0643EF"/>
-    <path d="m35.46 57.15 6.99-0.39 1.99-1.95 3.59 1.57-3.68 4.04-10.71 0.19 1.82-3.46z" fill="url(#d8g2)"/>
+    <path d="m35.46 57.15 6.99-0.39 1.99-1.95 3.59 1.57-3.68 4.04-10.71 0.19 1.82-3.46z" fill="url(#d8g8)"/>
     <path d="m33.12 54.8h2.84l1.34 1.85-1.9 0.54-2.28-2.39z" fill="#7822A6"/>
     <path d="m42.62 56.99 1.57 3.37 3.35-3.87-0.5-0.27-2.73 3.26-1.33-2.68-0.36 0.19z" fill="#D2F5FF" opacity=".6"/>
     <path d="m42.27 33.24 1.7 3.43 3.63-4.26-0.51-0.22-2.97 3.6-1.47-2.66-0.38 0.11z" fill="#D2F5FF" opacity=".6"/>
