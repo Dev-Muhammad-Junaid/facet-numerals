@@ -1,5 +1,5 @@
 // Facet Numerals — faceted SVG digits with motion.
-// Code: MIT. Digit artwork (./digits.js): CC BY-NC 4.0, see LICENSE-ASSETS.md.
+// MIT licensed, code and digit artwork alike.
 import { DIGITS } from './digits.js';
 
 export { DIGITS };

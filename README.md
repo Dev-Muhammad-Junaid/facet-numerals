@@ -143,10 +143,8 @@ The finishes are SVG filters in `index.html` (`#f-gold`, `#f-graphite`, `#f-pear
 
 ## License
 
-The npm package's license field is `MIT AND CC-BY-NC-4.0`: the component code is MIT, and the digit artwork bundled with it is non-commercial.
+[MIT](LICENSE), for everything: the code, the SVGs, the GIF and the preview image. Use it in personal or commercial work, change it, ship it; just keep the copyright notice.
 
+## Credits
 
-- **Code** (`src/index.js`, `src/define.js`, `index.html`, `examples/`, `tools/`): [MIT](LICENSE)
-- **Digit artwork** (`svg/`, `digits.js`, `src/digits.js`, `media/`, `preview.png`): [CC BY-NC 4.0](LICENSE-ASSETS.md). Remix freely for non-commercial use, with credit.
-
-The digits were generated with [QuiverAI Arrow](https://quiver.ai) on its free tier, which allows only non-commercial use of its output, so the artwork can't be licensed for commercial use. Replace the artwork with your own and you can use the code for anything.
+The digits started as an image generated with ChatGPT, were converted to SVG with [QuiverAI Arrow](https://quiver.ai) on a paid plan, then audited, normalized and hand-fixed in this repo (see `tools/patches.py`). Versions 0.1.0 and 0.1.1 on npm were published under `MIT AND CC-BY-NC-4.0` before the license was simplified; 0.2.0 onward is MIT throughout.
