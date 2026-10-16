@@ -78,7 +78,6 @@ Both run in Node with no DOM. The files are also importable directly as `facet-n
 | `svg/original/` | The digits as first generated, kept for the audit. |
 | `tools/normalize.py` | Rebuilds `svg/`, `digits.js` and `src/digits.js` from `svg/original/`. |
 | `tools/patches.py` | Hand fixes the normalizer applies on top of the originals (the 6's redraw, hole floors, crack sealing). |
-| `media/before.js` | The digits as they were before the fixes, for the lab's Fixes section. |
 | `tools/capture-gif.cjs` | Renders `media/motions.gif` from the lab, frame by frame. |
 | `media/motions.gif` | The motion reel at the top of this README. |
 | `preview.png` | Static social preview image. |

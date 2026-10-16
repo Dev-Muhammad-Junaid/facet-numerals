@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Facet Numerals</title>
-<meta name="description" content="Ten faceted gem-style SVG digits, audited and rebuilt on a tabular grid, with eight motion studies, six finishes and handoff motion tokens. Free to remix.">
+<meta name="description" content="Faceted gem-cut SVG digits as a web component: seven motions, six finishes, reduced-motion aware, no dependencies. MIT licensed.">
 <meta property="og:title" content="Facet Numerals">
 <meta property="og:description" content="Faceted SVG digits with motion studies, finishes and motion tokens. Free to remix.">
 <meta property="og:image" content="https://dev-muhammad-junaid.github.io/facet-numerals/preview.png">
@@ -41,6 +41,7 @@ p{margin:0}
 .lede{color:var(--muted);max-width:62ch}
 .mono{font-family:var(--f-mono);font-size:12.5px}
 section{display:grid;gap:24px}
+.wrap>*,section>*{min-width:0}
 .sec-head{display:grid;gap:10px;max-width:70ch}
 .sec-head p{color:var(--muted)}
 
@@ -91,52 +92,27 @@ button.primary:hover{background:#3A8DFF}
 .readout strong{font:600 14px/1.2 var(--f-disp);color:var(--text);letter-spacing:.02em}
 .rm-note{color:var(--warn);font-size:13px}
 
-/* ---------- audit ---------- */
-.audit{display:grid;gap:14px}
-.audit-row{border:1px solid var(--line);border-radius:6px;overflow:hidden}
-.audit-row header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;padding:12px 16px;background:var(--panel);border-bottom:1px solid var(--line)}
-.audit-row header p{color:var(--muted);font-size:13.5px}
-.audit-strip{overflow-x:auto;background:var(--paper)}
-.audit-strip[data-bg=ink]{background:var(--ink)}
-.audit-inner{position:relative;display:flex;gap:0;padding:22px 90px 30px 20px;width:max-content}
-.orig-cell{position:relative;width:88px;height:88px;flex:none}
-.orig-cell svg{width:100%;height:100%;display:block}
-.orig-cell .m{position:absolute;left:0;right:0;top:100%;margin-top:4px;text-align:center;font:500 10px/1 var(--f-mono);color:#7A7FA3}
-.orig-cell .m.bad{color:#D6203F;font-weight:500}
-.audit-strip[data-bg=ink] .orig-cell .m{color:var(--dim)}
-.audit-strip[data-bg=ink] .orig-cell .m.bad{color:var(--crit)}
-.audit-guides{position:absolute;left:12px;right:84px;pointer-events:none}
-.audit-guides i{position:absolute;left:0;right:0;border-top:1px solid var(--guide)}
-.audit-guides span{position:absolute;right:0;transform:translate(calc(100% + 6px),-50%);font:500 10px/1 var(--f-mono);color:var(--guide);white-space:nowrap}
-.audit-bar{display:flex;gap:6px;flex-wrap:wrap}
-.findings{display:grid;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden}
-.finding{display:grid;grid-template-columns:92px minmax(0,1fr) auto;gap:16px;align-items:start;padding:14px 16px;border-top:1px solid var(--line);background:var(--panel)}
-.finding:first-child{border-top:0}
-.finding p{color:var(--muted);font-size:14px;max-width:72ch}
-.finding h3{margin-bottom:4px}
-.sev{font:600 10.5px/1 var(--f-disp);letter-spacing:.12em;text-transform:uppercase;padding:5px 7px;border-radius:3px;text-align:center;border:1px solid}
-.sev.crit{color:var(--crit);border-color:color-mix(in srgb,var(--crit) 45%,transparent);background:color-mix(in srgb,var(--crit) 10%,transparent)}
-.sev.high{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,transparent);background:color-mix(in srgb,var(--warn) 9%,transparent)}
-.sev.low{color:var(--muted);border-color:var(--line2)}
-.sev.pass{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 45%,transparent);background:color-mix(in srgb,var(--ok) 9%,transparent)}
-.status{font:500 11px/1 var(--f-mono);white-space:nowrap;padding-top:3px}
-.status.fixed{color:var(--ok)}.status.open{color:var(--warn)}.status.note{color:var(--dim)}
-@media (max-width:640px){.finding{grid-template-columns:1fr}.status{padding-top:0}}
-
-/* ---------- fixes ---------- */
-.fixes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,500px),1fr));gap:12px}
-.fix{border:1px solid var(--line);border-radius:6px;background:var(--panel);display:grid;grid-template-rows:auto auto 1fr}
-.fix header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 16px 0}
-.fix .pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 16px}
-.fix figure{margin:0;display:grid;gap:6px;min-width:0}
-.fix figcaption{font:500 11px/1 var(--f-disp);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
-.fix .art{background:var(--paper);border-radius:4px;display:flex;justify-content:center;align-items:center;gap:2px;padding:12px 8px;min-height:170px;overflow:hidden}
-.fix .art svg{height:150px;width:auto;max-width:100%;flex:0 1 auto;min-width:0}
-.fix .art.row svg{height:auto;width:calc(20% - 2px)}
-.fix .art.zoom svg{height:170px}
-.fix .note{padding:0 16px 16px;color:var(--muted);font-size:14px;display:grid;gap:6px;align-content:start}
-.fix .note ul{margin:0;padding-left:18px;display:grid;gap:2px}
-.fix .kind{font:500 11px/1 var(--f-mono);color:var(--dim)}
+/* ---------- install, use cases, get started ---------- */
+.install{display:inline-flex;align-items:stretch;border:1px solid var(--line2);border-radius:4px;overflow:hidden;width:max-content;max-width:100%}
+.install code{font:500 14px/1 var(--f-mono);padding:11px 14px;color:var(--cyan);background:var(--panel);white-space:nowrap}
+.install button{border:0;border-left:1px solid var(--line2);border-radius:0}
+.uses{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:12px}
+.use{border:1px solid var(--line);border-radius:6px;background:var(--panel);display:grid;grid-template-rows:auto 1fr;overflow:hidden;min-width:0}
+.use .demo{min-height:180px;display:grid;place-items:center;align-content:center;gap:14px;padding:20px;background:radial-gradient(90% 90% at 30% 20%,#11153A 0%,var(--ink) 70%);border-bottom:1px solid var(--line)}
+.use .demo.paper{background:var(--paper);color:#20244A}
+.use-body{padding:14px 16px 16px;display:grid;gap:8px;align-content:start;min-width:0}
+.use-body p,.step p{color:var(--muted);font-size:13.5px}
+.snippet{position:relative;border:1px solid var(--line);border-radius:4px;background:var(--ink);min-width:0}
+.snippet pre{margin:0;padding:10px 70px 10px 12px;overflow-x:auto;font:400 12px/1.6 var(--f-mono);color:#C9CDEE;white-space:pre}
+.snippet .copy{position:absolute;top:6px;right:6px;font-size:11px;padding:5px 8px}
+.stat{display:grid;gap:8px;justify-items:center}
+.stat-label{font:500 11px/1 var(--f-disp);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.likes{display:flex;align-items:center;gap:14px}
+.inline-demo{margin:0;font:500 20px/1.4 var(--f-body);text-align:center}
+.ssr{display:flex}.ssr svg{height:60px;width:auto}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.step{border:1px solid var(--line);border-radius:6px;background:var(--panel);padding:14px 16px 16px;display:grid;gap:10px;align-content:start;min-width:0}
+#start table td:first-child{white-space:normal}
 
 /* ---------- motion cards ---------- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
@@ -213,10 +189,11 @@ a:hover{color:#fff}
 <main class="wrap">
 
   <div class="top">
-    <span class="eyebrow">Brand numerals · precision &amp; motion review</span>
+    <span class="eyebrow">SVG digits · web component · MIT</span>
     <h1>Facet Numerals</h1>
-    <p class="lede">The ten faceted digits, checked for alignment, rebuilt on a shared tabular grid, then put through the motions a product would actually use. Type a value, pick a motion and a treatment, and slow it down to inspect the frames.</p>
-    <p class="links"><a href="https://github.com/Dev-Muhammad-Junaid/facet-numerals">Source on GitHub</a><span aria-hidden="true">·</span><a href="https://github.com/Dev-Muhammad-Junaid/facet-numerals/tree/main/svg">Download the SVGs</a><span aria-hidden="true">·</span><a href="#spec">Motion tokens</a></p>
+    <p class="lede">Ten faceted, gem-cut digits as a drop-in web component. Change the value and the number animates: seven motions, six finishes, reduced-motion aware, no dependencies. Try it below, then copy a use case.</p>
+    <div class="install"><code id="install-cmd">npm i facet-numerals</code><button type="button" id="copy-install">Copy</button></div>
+    <p class="links"><a href="https://github.com/Dev-Muhammad-Junaid/facet-numerals">GitHub</a><span aria-hidden="true">·</span><a href="https://www.npmjs.com/package/facet-numerals">npm</a><span aria-hidden="true">·</span><a href="#start">Get started</a><span aria-hidden="true">·</span><a href="#uses">Use cases</a></p>
   </div>
 
   <section aria-label="Motion lab">
@@ -242,7 +219,7 @@ a:hover{color:#fff}
           <div class="row" role="group" aria-labelledby="lbl-motion" id="motion-chips"></div>
         </div>
         <div class="ctl">
-          <span class="lbl" id="lbl-treat">Treatment</span>
+          <span class="lbl" id="lbl-treat">Finish</span>
           <div class="row" role="group" aria-labelledby="lbl-treat" id="treat-chips"></div>
         </div>
         <div class="ctl">
@@ -264,41 +241,67 @@ a:hover{color:#fff}
     </div>
   </section>
 
-  <section id="audit" aria-labelledby="h-audit">
+  <section id="uses" aria-labelledby="h-uses">
     <div class="sec-head">
-      <span class="eyebrow">01 · Precision audit</span>
-      <h2 id="h-audit">The files are close, but not production-precise</h2>
-      <p>Measured from the rendered alpha of each glyph with the black backing removed. Figures are percent of each file's own artboard, so 48 px and 80 px files compare directly. The red lines mark the set's median cap line and baseline.</p>
+      <span class="eyebrow">01 · Use cases</span>
+      <h2 id="h-uses">Drop it in wherever a number changes</h2>
+      <p>Every demo below is the real <span class="mono">&lt;facet-number&gt;</span> element from the npm package. Copy the snippet under it.</p>
     </div>
-    <div class="audit">
-      <div class="audit-bar" role="group" aria-label="Audit background">
-        <button type="button" class="chip" data-abg="paper" aria-pressed="true">Paper</button>
-        <button type="button" class="chip" data-abg="ink" aria-pressed="false">Ink</button>
-      </div>
-      <div class="audit-row">
-        <header><h3>As delivered</h3><p>Original files, each scaled to the same 88 px box. Label shows where the glyph bottom lands.</p></header>
-        <div class="audit-strip" data-bg="paper"><div class="audit-inner" id="audit-orig"></div></div>
-      </div>
-      <div class="audit-row">
-        <header><h3>Normalized and fixed</h3><p>On a 56 × 80 tabular cell (cap line 8, baseline 72), with the fixes listed below applied.</p></header>
-        <div class="audit-strip" data-bg="paper"><div class="audit-inner" id="audit-norm"></div></div>
-      </div>
-      <div class="findings" id="findings"></div>
-    </div>
-  </section>
+    <div class="uses">
+      <article class="use">
+        <div class="demo">
+          <div class="stat"><span class="stat-label">Downloads this week</span><facet-number id="u-stat" value="12480" motion="roll" glint style="--facet-height:60px"></facet-number></div>
+          <button type="button" data-act="stat">Update</button>
+        </div>
+        <div class="use-body"><h3>Stat counter</h3><p>Each digit rolls to its new value, odometer style, then catches the light.</p>
+          <div class="snippet"><pre>&lt;facet-number value="12480" motion="roll" glint&gt;&lt;/facet-number&gt;</pre><button type="button" class="copy">Copy</button></div></div>
+      </article>
+      <article class="use">
+        <div class="demo"><facet-number id="u-clock" pad="6" motion="flip" style="--facet-height:60px"></facet-number></div>
+        <div class="use-body"><h3>Live clock</h3><p>Split-flap flips, padded to six digits so the width never changes.</p>
+          <div class="snippet"><pre>&lt;facet-number id="clock" pad="6" motion="flip"&gt;&lt;/facet-number&gt;
 
-  <section id="fixes" aria-labelledby="h-fixes">
-    <div class="sec-head">
-      <span class="eyebrow">02 · Fixes</span>
-      <h2 id="h-fixes">What changed after the audit</h2>
-      <p>Each pair shows the files before and after the fix, on paper, where the problems are easiest to see. The edits to the artwork live in <span class="mono">tools/patches.py</span>; the original files are untouched.</p>
+setInterval(() =&gt; {
+  const d = new Date();
+  clock.value = [d.getHours(), d.getMinutes(), d.getSeconds()]
+    .map(n =&gt; String(n).padStart(2, '0')).join('');
+}, 1000);</pre><button type="button" class="copy">Copy</button></div></div>
+      </article>
+      <article class="use">
+        <div class="demo">
+          <div class="stat"><span class="stat-label">Leaderboard rank</span><facet-number id="u-rank" value="3" motion="drop" finish="gold" glint style="--facet-height:72px"></facet-number></div>
+          <button type="button" data-act="rank">New rank</button>
+        </div>
+        <div class="use-body"><h3>Rank or score</h3><p>The new digit drops in and settles on the baseline. Gold for first-place moments.</p>
+          <div class="snippet"><pre>&lt;facet-number value="3" motion="drop" finish="gold" glint&gt;&lt;/facet-number&gt;</pre><button type="button" class="copy">Copy</button></div></div>
+      </article>
+      <article class="use">
+        <div class="demo">
+          <div class="likes"><facet-number id="u-like" value="128" motion="pop" style="--facet-height:52px"></facet-number><button type="button" data-act="like" aria-label="Like">♥ Like</button></div>
+        </div>
+        <div class="use-body"><h3>Like button</h3><p>A quick pop on single increments. Only the digits that change move.</p>
+          <div class="snippet"><pre>&lt;facet-number id="likes" value="128" motion="pop"&gt;&lt;/facet-number&gt;
+
+likeButton.onclick = () =&gt; likes.set(+likes.value + 1);</pre><button type="button" class="copy">Copy</button></div></div>
+      </article>
+      <article class="use">
+        <div class="demo paper"><p class="inline-demo">Order <facet-number value="4271" finish="pearl"></facet-number> is ready</p></div>
+        <div class="use-body"><h3>Inline with text</h3><p>The default height is 1.4em, so it sits in a sentence. Pearl is the finish for light backgrounds.</p>
+          <div class="snippet"><pre>Order &lt;facet-number value="4271" finish="pearl"&gt;&lt;/facet-number&gt; is ready</pre><button type="button" class="copy">Copy</button></div></div>
+      </article>
+      <article class="use">
+        <div class="demo"><div class="ssr" id="u-ssr" aria-label="2026" role="img"></div></div>
+        <div class="use-body"><h3>Static SVG, rendered on the server</h3><p>No JavaScript in the browser: generate the SVG markup in Node and send it with the page.</p>
+          <div class="snippet"><pre>import { numberSVG } from 'facet-numerals';
+
+const html = numberSVG(2026, { finish: 'graphite' }).join('');</pre><button type="button" class="copy">Copy</button></div></div>
+      </article>
     </div>
-    <div class="fixes" id="fix-list"></div>
   </section>
 
   <section id="motions" aria-labelledby="h-motion">
     <div class="sec-head">
-      <span class="eyebrow">03 · Motion studies</span>
+      <span class="eyebrow">02 · Motions</span>
       <h2 id="h-motion">Eight motions, each for a specific job</h2>
       <p>Every study stays under 800 ms, eases out, and lands on the baseline without drift. Select a card to replay it with a new value. The playback speed above applies here too.</p>
     </div>
@@ -307,16 +310,59 @@ a:hover{color:#fff}
 
   <section id="treatments" aria-labelledby="h-treat">
     <div class="sec-head">
-      <span class="eyebrow">04 · Treatments</span>
+      <span class="eyebrow">03 · Finishes</span>
       <h2 id="h-treat">One geometry, six finishes</h2>
-      <p>The finishes reuse the facet shading. The metal and pearl sets map each facet's luminance through a duotone ramp, so the light direction stays top-left in every version. Select a tile to catch the light.</p>
+      <p>Set <span class="mono">finish</span> on the element. The metal and pearl finishes map each facet's brightness through a colour ramp, so the light still falls from the top left. Select a tile to catch the light.</p>
     </div>
     <div class="tiles" id="tiles"></div>
   </section>
 
+  <section id="start" aria-labelledby="h-start">
+    <div class="sec-head">
+      <span class="eyebrow">04 · Get started</span>
+      <h2 id="h-start">Install, register, set a value</h2>
+      <p>Works in plain HTML, React, Vue and Svelte. TypeScript types are included.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>1. Install</h3>
+        <div class="snippet"><pre>npm i facet-numerals</pre><button type="button" class="copy">Copy</button></div>
+        <p>No build step? Load it from a CDN instead:</p>
+        <div class="snippet"><pre>&lt;script type="module" src="https://cdn.jsdelivr.net/npm/facet-numerals/src/define.js"&gt;&lt;/script&gt;</pre><button type="button" class="copy">Copy</button></div></div>
+      <div class="step"><h3>2. Register the element</h3>
+        <div class="snippet"><pre>import 'facet-numerals/define';</pre><button type="button" class="copy">Copy</button></div>
+        <p>Or call <span class="mono">define('my-number')</span> from the main entry to use your own tag name.</p></div>
+      <div class="step"><h3>3. Use it</h3>
+        <div class="snippet"><pre>&lt;facet-number value="2026" motion="roll" glint&gt;&lt;/facet-number&gt;</pre><button type="button" class="copy">Copy</button></div>
+        <p>Change <span class="mono">value</span>, as an attribute or a property, and the number animates to it.</p></div>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Attribute</th><th>Values</th><th>Default</th></tr></thead>
+      <tbody>
+        <tr><td>value</td><td>Any number. Non-digits are ignored.</td><td class="mono">0</td></tr>
+        <tr><td>motion</td><td class="mono">roll · flip · drop · focus · pop · assemble · draw · fade · none</td><td class="mono">roll</td></tr>
+        <tr><td>finish</td><td class="mono">gem · gold · graphite · pearl · wire · glass</td><td class="mono">gem</td></tr>
+        <tr><td>glint</td><td>Present: a highlight sweeps across after each change</td><td>off</td></tr>
+        <tr><td>pad</td><td>Minimum number of digits, padded with zeros</td><td class="mono">0</td></tr>
+        <tr><td>speed</td><td>Playback rate, for example 0.25 to slow motions down</td><td class="mono">1</td></tr>
+      </tbody>
+    </table></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>JavaScript and CSS</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">await el.set(4815, { motion: 'flip', glint: true })</td><td>Animates to a value and resolves when every digit has settled</td></tr>
+        <tr><td class="mono">await el.glint()</td><td>Sweeps a highlight across the number</td></tr>
+        <tr><td class="mono">facet-settle</td><td>Event fired after each change, with <span class="mono">detail.value</span></td></tr>
+        <tr><td class="mono">digitSVG(7) · numberSVG(2026)</td><td>SVG strings for server rendering or static use; IDs are unique per call</td></tr>
+        <tr><td class="mono">--facet-height</td><td>Size (default 1.4em). Each digit is 0.7 times as wide as it is tall. Also <span class="mono">--facet-gap</span> and <span class="mono">::part(number)</span></td></tr>
+        <tr><td class="mono">facet-numerals/svg/0.svg … 9.svg</td><td>The digits as plain SVG files, on a 56 × 80 tabular cell</td></tr>
+      </tbody>
+    </table></div>
+    <p class="foot">Screen readers hear the number: the element sets <span class="mono">role="img"</span> and an <span class="mono">aria-label</span> with the current value. With reduced motion turned on, every change becomes a short crossfade.</p>
+  </section>
+
   <section id="spec" aria-labelledby="h-spec">
     <div class="sec-head">
-      <span class="eyebrow">05 · Handoff spec</span>
+      <span class="eyebrow">05 · Motion tokens</span>
       <h2 id="h-spec">Timing and easing tokens</h2>
       <p>Durations are at 1× speed. Stagger runs left to right across digit places, so the eye reads the number the same way it reads text.</p>
     </div>
@@ -345,12 +391,11 @@ a:hover{color:#fff}
   --num-cell:        56 / 80; /* tabular advance, cap 64, baseline 72 */
 }</pre>
     </div>
-    <p class="foot">Free to remix. The normalized SVGs, the original files, this page and the normalizer script are on <a href="https://github.com/Dev-Muhammad-Junaid/facet-numerals">GitHub</a>. Everything is MIT licensed, the digit artwork included.</p>
+    <p class="foot">MIT licensed, code and artwork. Source on <a href="https://github.com/Dev-Muhammad-Junaid/facet-numerals">GitHub</a>, package on <a href="https://www.npmjs.com/package/facet-numerals">npm</a>.</p>
   </section>
 </main>
 
 <script src="digits.js"></script>
-<script src="media/before.js"></script>
 <script>
 const D = window.FACET_DIGITS;
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -576,79 +621,6 @@ $('#paper').addEventListener('change', e => { $('#stage').dataset.bg = e.target.
 if (RM) $('#rm-note').hidden = false;
 readout(); fitHero();
 
-/* ---------- audit ---------- */
-const MED_TOP = 11.1, MED_BOT = 98.3;
-function auditRows(){
-  const o = $('#audit-orig'), n = $('#audit-norm');
-  const PAD = 22, BOX = 88;
-  o.innerHTML = D.map((g, d) => {
-    const bad = Math.abs(g.bot - MED_BOT) > 1 || Math.abs(g.top - MED_TOP) > 1.2;
-    return `<div class="orig-cell">${g.orig.replace(/<svg /, '<svg aria-hidden="true" ').replace(/ width="\d+" height="\d+"/, '')}<span class="m${bad ? ' bad' : ''}">${g.bot.toFixed(1)}%</span></div>`;
-  }).join('') + `<div class="audit-guides" style="top:${PAD}px;height:${BOX}px"><i style="top:${MED_TOP}%"><span>cap ${MED_TOP}%</span></i><i style="top:${MED_BOT}%"><span>base ${MED_BOT}%</span></i></div>`;
-  n.innerHTML = D.map((g, d) => `<div class="orig-cell" style="width:61.6px">${digitSVG(d, 'gem')}<span class="m">${['floor', 'sealed', 'ok', 'ok', 'realigned', 'ok', 'redrawn', 'sealed', 'realigned', 'realigned'][d]}</span></div>`).join('')
-    + `<div class="audit-guides" style="top:${PAD}px;height:${BOX}px"><i style="top:10%"><span>cap 8</span></i><i style="top:90%"><span>base 72</span></i></div>`;
-  n.querySelectorAll('svg.dg').forEach(s => { s.style.width = '100%'; s.style.height = '100%'; });
-}
-auditRows();
-document.querySelector('.audit-bar').addEventListener('click', e => {
-  const b = e.target.closest('.chip'); if (!b) return;
-  document.querySelectorAll('.audit-bar .chip').forEach(c => c.setAttribute('aria-pressed', c === b));
-  document.querySelectorAll('.audit-strip').forEach(s => s.dataset.bg = b.dataset.abg);
-});
-
-const FINDINGS = [
-  ['crit', 'Holes are painted black', 'The holes in 0, 4, 8 and 9 are black-filled shapes, which read as black blobs on any ground but pure black (see the paper strip above). The 6 was cut clean through instead. Every hole now has the same dark floor (#330793), so all of them read as hollow on any background.', 'fixed'],
-  ['crit', 'Every file ships a black backing rectangle', 'All ten files start with an opaque black rect, and each one is a different width (41.2 to 74.2 units). Dropped onto a colored surface they show as mismatched black slabs.', 'fixed'],
-  ['high', 'Baseline drift on 4, 8 and 9', 'Against a median baseline of 98.3%, the 8 sits at 96.0% and the 9 at 93.9%, about 3.5 units high on an 80-unit artboard. The 4 runs to 100.0% and touches the canvas edge, so it can clip when rasterized at fractional sizes.', 'fixed'],
-  ['high', 'Two artboard sizes in one set', 'The 0 and 4 are drawn on 48 × 48, the rest on 80 × 80. Anything that reads the intrinsic width and height attributes renders those two at 60% size.', 'fixed'],
-  ['high', 'Cap height varies by 6.5%', 'Glyph height ranges from 84.4% (9) to 90.9% (4) of the artboard. In a row the 4 looks heavier and the 9 looks small.', 'fixed'],
-  ['high', 'Widths are proportional, so counters jitter', 'Glyph widths run from 35.3 units (1) to 49.0 (7) after scaling. A changing number would shift sideways on every tick. The normalized set centers each glyph on a fixed 56-unit advance.', 'fixed'],
-  ['high', 'The 6 needed a redraw', 'A see-through hole, a lumpy hook tip, a hairline opening (2.2% of cap height), a gold corner in five pieces, a curved bevel and a lopsided crease. All six are fixed; see the Fixes section.', 'fixed'],
-  ['high', 'Hairline cracks between facets', 'In the 1, 4, 7 and 9, neighbouring facets stop a fraction short of each other, so thin lines of background show through: 1,950 px in the 1 at 20 px per unit. The facets on each side now carry a 0.25-unit outline in their own colour, which closes every crack.', 'fixed'],
-  ['low', 'The 7 has less facet detail', 'The 7 is built from 18 facets where the other digits use 26 to 43, and its italic stem is the only diagonal in the set. It reads slightly flatter next to the others. This needs a redraw rather than a fix in code.', 'open'],
-  ['low', 'Slight curves in a faceted system', 'Most digits contain a few gently curved facet edges, and the right waist of the 8 has a visible curved sliver. At display sizes above about 200 px these break the cut-stone look. The 6 has been straightened; the rest are worth a vector pass.', 'open'],
-  ['pass', 'Light direction is consistent', 'All ten keep the same lighting: cyan on the top-left bevel, gold on the top-right, violet on the right and bottom faces. This is what makes the duotone treatments work without per-digit tuning.', 'note'],
-  ['pass', 'Gradient IDs never collide', 'Each file uses its own gradient ID suffix, so the originals can be inlined together safely. The normalized files rename them to d0g0 … d9g10 and strip the generator comment.', 'note']
-];
-$('#findings').innerHTML = FINDINGS.map(([s, h, p, st]) => `<div class="finding"><span class="sev ${s}">${{crit:'Critical', high:'High', low:'Low', pass:'Pass'}[s]}</span><div><h3>${h}</h3><p>${p}</p></div><span class="status ${st}">${{fixed:'Fixed in set', open:'Needs redraw', note:'No action'}[st]}</span></div>`).join('');
-
-/* ---------- fixes ---------- */
-const B = window.FACET_BEFORE || {};
-let bid = 0;
-function beforeSVG(key, viewBox) {
-  const id = 'b' + (++bid);
-  let s = (B[key] || '').replace(/d\dg(\d+)/g, id + 'g$1').replace(/ width="\d+" height="\d+"/, '').replace(/<svg /, '<svg aria-hidden="true" ');
-  if (viewBox) s = s.replace(/viewBox="[^"]*"/, `viewBox="${viewBox}"`);
-  return s;
-}
-function afterSVG(d, viewBox) {
-  const s = digitSVG(d, 'gem');
-  return viewBox ? s.replace('viewBox="0 0 56 80"', `viewBox="${viewBox}"`) : s;
-}
-const FIXES = [
-  { title: 'Black wedges on the 2 and the 6', kind: 'bug in this page and npm 0.1.0, not the artwork',
-    before: beforeSVG('wedge2') + beforeSVG('wedge6'), after: afterSVG(2) + afterSVG(6),
-    note: 'The 2 and 6 contain thin highlight lines with no fill of their own. The files rely on <span class="mono">fill="none"</span> on the outer &lt;svg&gt;, and the code that builds each digit dropped it, so those lines filled black. About 350 black pixels per four-digit number, now none.' },
-  { title: 'The 6, redrawn in six places', kind: 'artwork',
-    before: beforeSVG('6'), after: afterSVG(6),
-    note: '<ul><li>The hole was cut through; it now has a dark floor like the others.</li><li>Hook tip: straight edges, a flat end and a chamfered inner corner instead of a curl.</li><li>The opening under the hook grows from 2.2% to 4.2% of cap height (the 5 has 3.9%).</li><li>The gold corner is one facet instead of five pieces.</li><li>The bevel on top of the bowl is straight.</li><li>The lower band is one solid facet instead of three overlapping patches.</li></ul>' },
-  { title: 'Every hole reads as hollow', kind: 'artwork', row: true,
-    before: [0, 4, 6, 8, 9].map(d => beforeSVG(String(d))).join(''), after: [0, 4, 6, 8, 9].map(d => afterSVG(d)).join(''),
-    note: 'The 0 and 9 holes showed the blue face through them (brightness 0.40) and read as solid, while the 4 and 8 were dark and the 6 was see-through. All holes now share one floor colour, #330793.' },
-  { title: 'Hairline cracks between facets', kind: 'artwork', zoom: true,
-    before: beforeSVG('1', '22 47 14 14'), after: afterSVG(1, '22 47 14 14'),
-    note: 'Zoomed into the foot of the 1, where the cracks were widest: the thin pale lines along the stem and under it. Neighbouring facets stopped short of each other and let the background through: 1,950 px in the 1, 288 in the 9, 64 in the 7 and 31 in the 4 (at 20 px per unit). Now under 10 in any digit.' }
-];
-$('#fix-list').innerHTML = FIXES.map(f => `<article class="fix">
-  <header><h3>${f.title}</h3><span class="status fixed">Fixed</span></header>
-  <div class="pair">
-    <figure><figcaption>Before</figcaption><div class="art${f.row ? ' row' : ''}${f.zoom ? ' zoom' : ''}">${f.before}</div></figure>
-    <figure><figcaption>After</figcaption><div class="art${f.row ? ' row' : ''}${f.zoom ? ' zoom' : ''}">${f.after}</div></figure>
-  </div>
-  <div class="note"><span class="kind">${f.kind}</span><div>${f.note}</div></div>
-</article>`).join('');
-$('#fix-list').querySelectorAll('svg.dg').forEach(s => { s.style.position = 'static'; });
-
 /* ---------- motion cards ---------- */
 const cards = [];
 $('#cards').innerHTML = Object.entries(MOTIONS).map(([k, m]) => `
@@ -707,8 +679,34 @@ $('#copy-tokens').addEventListener('click', e => {
   navigator.clipboard.writeText(txt).then(done, () => { const r = document.createRange(); r.selectNodeContents($('#tokens')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Press ⌘C'; });
 });
 
+/* ---------- copy buttons ---------- */
+function copyFrom(btn, text) {
+  const label = btn.textContent;
+  navigator.clipboard.writeText(text).then(
+    () => { btn.textContent = 'Copied'; setTimeout(() => { btn.textContent = label; }, 1600); },
+    () => { btn.textContent = 'Select to copy'; });
+}
+document.querySelectorAll('.snippet .copy').forEach(b => b.addEventListener('click', () => copyFrom(b, b.parentElement.querySelector('pre').textContent)));
+$('#copy-install').addEventListener('click', e => copyFrom(e.currentTarget, $('#install-cmd').textContent));
+
 /* ---------- opening sequence: complete at rest, then one roll ---------- */
 if (!RM) setTimeout(() => { hero.render('0000'); fitHero(); hero.set('2026', 'roll'); }, 450);
+</script>
+<script type="module">
+// Use cases run on the package itself.
+import './src/define.js';
+import { numberSVG } from './src/index.js';
+const q = id => document.getElementById(id);
+document.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => {
+  const act = b.dataset.act;
+  if (act === 'stat') { const el = q('u-stat'); el.value = +el.value + 37 + Math.floor(Math.random() * 400); }
+  if (act === 'rank') { const el = q('u-rank'); let v; do { v = 1 + Math.floor(Math.random() * 9); } while (String(v) === el.value); el.value = v; }
+  if (act === 'like') { const el = q('u-like'); el.set(+el.value + 1, { motion: 'pop' }); }
+}));
+const clock = q('u-clock');
+const tick = () => { const d = new Date(); clock.value = [d.getHours(), d.getMinutes(), d.getSeconds()].map(n => String(n).padStart(2, '0')).join(''); };
+tick(); setInterval(tick, 1000);
+q('u-ssr').innerHTML = numberSVG(2026, { finish: 'graphite' }).join('');
 </script>
 </body>
 </html>
