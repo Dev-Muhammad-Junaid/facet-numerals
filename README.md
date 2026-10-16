@@ -1,6 +1,6 @@
 # Facet Numerals
 
-![The ten Facet Numerals digits on a dark background](preview.png)
+![Facet Numerals cycling through eight motions: odometer roll, split flip, drop and settle, focus snap, tick pop, facet assemble, line draw to fill and glint sweep](media/motions.gif)
 
 Ten faceted, gem-style SVG digits, audited for precision and rebuilt on a shared tabular grid, plus a motion lab for trying them out.
 
@@ -17,6 +17,9 @@ In the lab you can type a number, then choose one of seven motions and one of si
 | `svg/0.svg` … `svg/9.svg` | Normalized digits, ready to use. |
 | `svg/original/` | The digits as first generated, kept for the audit. |
 | `tools/normalize.py` | Rebuilds `svg/` and `digits.js` from `svg/original/`. |
+| `tools/capture-gif.js` | Renders `media/motions.gif` from the lab, frame by frame. |
+| `media/motions.gif` | The motion reel at the top of this README. |
+| `preview.png` | Static social preview image. |
 
 ## Using the SVGs
 
@@ -70,11 +73,13 @@ Digits animate left to right, 30–50ms apart (90ms for assemble and draw). All 
 python3 tools/normalize.py
 ```
 
+To regenerate the GIF after changing digits or motions, run `tools/capture-gif.js` with a local server running, then encode the frames with [gifski](https://gif.ski). The script pauses every animation on the page and steps it 40 ms at a time, so the GIF matches the real timing exactly. Usage is at the top of the file.
+
 The finishes are SVG filters in `index.html` (`#f-gold`, `#f-graphite`, `#f-pearl`). Each maps every facet's brightness onto a five-step color ramp, so you can add a new finish by copying a filter and changing its `tableValues`.
 
 ## License
 
 - **Code** (`index.html`, `tools/`): [MIT](LICENSE)
-- **Digit artwork** (`svg/`, `digits.js`, `preview.png`): [CC BY-NC 4.0](LICENSE-ASSETS.md). Remix freely for non-commercial use, with credit.
+- **Digit artwork** (`svg/`, `digits.js`, `media/`, `preview.png`): [CC BY-NC 4.0](LICENSE-ASSETS.md). Remix freely for non-commercial use, with credit.
 
 The digits were generated with [QuiverAI Arrow](https://quiver.ai) on its free tier, which allows only non-commercial use of its output, so the artwork can't be licensed for commercial use. Replace the artwork with your own and you can use the code for anything.

@@ -3,7 +3,7 @@ MIT License
 Copyright (c) 2026 Dev-Muhammad-Junaid
 
 This license covers the code in this repository: index.html (markup, CSS and
-JavaScript) and tools/normalize.py. The digit artwork is licensed separately,
+JavaScript) and the scripts in tools/. The digit artwork is licensed separately,
 see LICENSE-ASSETS.md.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
