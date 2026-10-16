@@ -77,7 +77,9 @@ Both run in Node with no DOM. The files are also importable directly as `facet-n
 | `svg/0.svg` … `svg/9.svg` | Normalized digits, ready to use. |
 | `svg/original/` | The digits as first generated, kept for the audit. |
 | `tools/normalize.py` | Rebuilds `svg/`, `digits.js` and `src/digits.js` from `svg/original/`. |
-| `tools/capture-gif.js` | Renders `media/motions.gif` from the lab, frame by frame. |
+| `tools/patches.py` | Hand fixes the normalizer applies on top of the originals (the 6's redraw, hole floors, crack sealing). |
+| `media/before.js` | The digits as they were before the fixes, for the lab's Fixes section. |
+| `tools/capture-gif.cjs` | Renders `media/motions.gif` from the lab, frame by frame. |
 | `media/motions.gif` | The motion reel at the top of this README. |
 | `preview.png` | Static social preview image. |
 
@@ -87,7 +89,7 @@ Every normalized digit sits on the same **56 × 80** cell:
 
 - cap line at **y = 8**, baseline at **y = 72** (cap height 64)
 - glyph centered horizontally, so every digit takes the same width and numbers don't shift sideways as they change
-- transparent background and see-through holes (counters), so they work on any background
+- transparent background, and every hole (counter) has the same dark floor, so the digits read as hollow on any background
 - gradient IDs are unique per digit (`d0g0` … `d9g10`), so all ten can be inlined on one page
 
 ```html
@@ -100,13 +102,15 @@ To animate individual facets, inline the SVG markup instead of using `<img>`.
 
 The generated files looked right on black but weren't production-ready:
 
-- **Painted holes.** The holes (counters) in 0, 4, 8 and 9 were black shapes, not cut-outs, so they showed as black blobs on light backgrounds.
+- **Painted holes.** The holes (counters) in 0, 4, 8 and 9 were black shapes, so they showed as black blobs on light backgrounds, and the 6's hole was cut clean through. All holes now share one dark floor colour.
 - **Black backgrounds.** Every file had an opaque black rectangle behind the digit, each a different width.
 - **Baseline drift.** 8 and 9 sat about 3 units high, and 4 touched the bottom edge of its canvas.
 - **Mixed canvas sizes.** 0 and 4 were drawn on 48 × 48, the rest on 80 × 80.
 - **Uneven heights and widths.** Digit height varied by 6.5%, and widths were proportional rather than fixed.
+- **Hairline cracks.** In the 1, 4, 7 and 9, neighbouring facets stopped a fraction short of each other, so thin lines of background showed through.
+- **The 6.** A lumpy hook tip, a hairline opening, a gold corner in five pieces, a curved bevel and a lopsided crease.
 
-`tools/normalize.py` fixes all of these. Two issues need a redraw by hand: the 7 has fewer facets than the others, and a few facet edges curve slightly. The lab page has the full list with measurements.
+`tools/normalize.py` fixes all of these, applying the hand edits in `tools/patches.py` on top of the untouched originals. Two issues still need a redraw by hand: the 7 has fewer facets than the others, and a few facet edges in other digits curve slightly. The lab page has the full list with measurements and a before/after for every fix.
 
 ## Motion tokens
 
@@ -133,7 +137,7 @@ Digits animate left to right, 30–50ms apart (90ms for assemble and draw). All 
 python3 tools/normalize.py
 ```
 
-To regenerate the GIF after changing digits or motions, run `tools/capture-gif.js` with a local server running, then encode the frames with [gifski](https://gif.ski). The script pauses every animation on the page and steps it 40 ms at a time, so the GIF matches the real timing exactly. Usage is at the top of the file.
+To regenerate the GIF after changing digits or motions, run `tools/capture-gif.cjs` with a local server running, then encode the frames with [gifski](https://gif.ski). The script pauses every animation on the page and steps it 40 ms at a time, so the GIF matches the real timing exactly. Usage is at the top of the file.
 
 The finishes are SVG filters in `index.html` (`#f-gold`, `#f-graphite`, `#f-pearl`). Each maps every facet's brightness onto a five-step color ramp, so you can add a new finish by copying a filter and changing its `tableValues`.
 

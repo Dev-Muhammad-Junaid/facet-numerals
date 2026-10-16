@@ -1,6 +1,6 @@
 {
   "name": "facet-numerals",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Faceted gem-style SVG digits on a tabular grid, with a <facet-number> web component: 7 motions, 6 finishes, glint, reduced-motion aware.",
   "type": "module",
   "main": "./src/index.js",

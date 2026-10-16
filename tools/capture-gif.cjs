@@ -4,7 +4,7 @@
 //
 // Usage (from the repo root, with a static server running on port 8000):
 //   npm i --no-save playwright-core
-//   node tools/capture-gif.js http://localhost:8000/ frames
+//   node tools/capture-gif.cjs http://localhost:8000/ frames
 //   gifski --fps 25 --width 800 --quality 92 -o media/motions.gif frames/*.png
 //
 // Set CHROME_PATH if Chrome isn't at the default macOS location.

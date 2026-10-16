@@ -123,6 +123,21 @@ button.primary:hover{background:#3A8DFF}
 .status.fixed{color:var(--ok)}.status.open{color:var(--warn)}.status.note{color:var(--dim)}
 @media (max-width:640px){.finding{grid-template-columns:1fr}.status{padding-top:0}}
 
+/* ---------- fixes ---------- */
+.fixes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,500px),1fr));gap:12px}
+.fix{border:1px solid var(--line);border-radius:6px;background:var(--panel);display:grid;grid-template-rows:auto auto 1fr}
+.fix header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 16px 0}
+.fix .pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 16px}
+.fix figure{margin:0;display:grid;gap:6px;min-width:0}
+.fix figcaption{font:500 11px/1 var(--f-disp);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.fix .art{background:var(--paper);border-radius:4px;display:flex;justify-content:center;align-items:center;gap:2px;padding:12px 8px;min-height:170px;overflow:hidden}
+.fix .art svg{height:150px;width:auto;max-width:100%;flex:0 1 auto;min-width:0}
+.fix .art.row svg{height:auto;width:calc(20% - 2px)}
+.fix .art.zoom svg{height:170px}
+.fix .note{padding:0 16px 16px;color:var(--muted);font-size:14px;display:grid;gap:6px;align-content:start}
+.fix .note ul{margin:0;padding-left:18px;display:grid;gap:2px}
+.fix .kind{font:500 11px/1 var(--f-mono);color:var(--dim)}
+
 /* ---------- motion cards ---------- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
 .card{border:1px solid var(--line);border-radius:6px;background:var(--panel);display:grid;grid-template-rows:auto 1fr;cursor:pointer;text-align:left;padding:0;color:inherit;font:inherit;letter-spacing:normal;transition:border-color .2s}
@@ -265,16 +280,25 @@ a:hover{color:#fff}
         <div class="audit-strip" data-bg="paper"><div class="audit-inner" id="audit-orig"></div></div>
       </div>
       <div class="audit-row">
-        <header><h3>Normalized</h3><p>Same geometry on a 56 × 80 tabular cell: cap line 8, baseline 72, glyph centered on its box.</p></header>
+        <header><h3>Normalized and fixed</h3><p>On a 56 × 80 tabular cell (cap line 8, baseline 72), with the fixes listed below applied.</p></header>
         <div class="audit-strip" data-bg="paper"><div class="audit-inner" id="audit-norm"></div></div>
       </div>
       <div class="findings" id="findings"></div>
     </div>
   </section>
 
+  <section id="fixes" aria-labelledby="h-fixes">
+    <div class="sec-head">
+      <span class="eyebrow">02 · Fixes</span>
+      <h2 id="h-fixes">What changed after the audit</h2>
+      <p>Each pair shows the files before and after the fix, on paper, where the problems are easiest to see. The edits to the artwork live in <span class="mono">tools/patches.py</span>; the original files are untouched.</p>
+    </div>
+    <div class="fixes" id="fix-list"></div>
+  </section>
+
   <section id="motions" aria-labelledby="h-motion">
     <div class="sec-head">
-      <span class="eyebrow">02 · Motion studies</span>
+      <span class="eyebrow">03 · Motion studies</span>
       <h2 id="h-motion">Eight motions, each for a specific job</h2>
       <p>Every study stays under 800 ms, eases out, and lands on the baseline without drift. Select a card to replay it with a new value. The playback speed above applies here too.</p>
     </div>
@@ -283,7 +307,7 @@ a:hover{color:#fff}
 
   <section id="treatments" aria-labelledby="h-treat">
     <div class="sec-head">
-      <span class="eyebrow">03 · Treatments</span>
+      <span class="eyebrow">04 · Treatments</span>
       <h2 id="h-treat">One geometry, six finishes</h2>
       <p>The finishes reuse the facet shading. The metal and pearl sets map each facet's luminance through a duotone ramp, so the light direction stays top-left in every version. Select a tile to catch the light.</p>
     </div>
@@ -292,7 +316,7 @@ a:hover{color:#fff}
 
   <section id="spec" aria-labelledby="h-spec">
     <div class="sec-head">
-      <span class="eyebrow">04 · Handoff spec</span>
+      <span class="eyebrow">05 · Handoff spec</span>
       <h2 id="h-spec">Timing and easing tokens</h2>
       <p>Durations are at 1× speed. Stagger runs left to right across digit places, so the eye reads the number the same way it reads text.</p>
     </div>
@@ -326,6 +350,7 @@ a:hover{color:#fff}
 </main>
 
 <script src="digits.js"></script>
+<script src="media/before.js"></script>
 <script>
 const D = window.FACET_DIGITS;
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -560,7 +585,7 @@ function auditRows(){
     const bad = Math.abs(g.bot - MED_BOT) > 1 || Math.abs(g.top - MED_TOP) > 1.2;
     return `<div class="orig-cell">${g.orig.replace(/<svg /, '<svg aria-hidden="true" ').replace(/ width="\d+" height="\d+"/, '')}<span class="m${bad ? ' bad' : ''}">${g.bot.toFixed(1)}%</span></div>`;
   }).join('') + `<div class="audit-guides" style="top:${PAD}px;height:${BOX}px"><i style="top:${MED_TOP}%"><span>cap ${MED_TOP}%</span></i><i style="top:${MED_BOT}%"><span>base ${MED_BOT}%</span></i></div>`;
-  n.innerHTML = D.map((g, d) => `<div class="orig-cell" style="width:61.6px">${digitSVG(d, 'gem')}<span class="m">${d === 4 || d === 8 || d === 9 ? 'realigned' : 'ok'}</span></div>`).join('')
+  n.innerHTML = D.map((g, d) => `<div class="orig-cell" style="width:61.6px">${digitSVG(d, 'gem')}<span class="m">${['floor', 'sealed', 'ok', 'ok', 'realigned', 'ok', 'redrawn', 'sealed', 'realigned', 'realigned'][d]}</span></div>`).join('')
     + `<div class="audit-guides" style="top:${PAD}px;height:${BOX}px"><i style="top:10%"><span>cap 8</span></i><i style="top:90%"><span>base 72</span></i></div>`;
   n.querySelectorAll('svg.dg').forEach(s => { s.style.width = '100%'; s.style.height = '100%'; });
 }
@@ -572,18 +597,57 @@ document.querySelector('.audit-bar').addEventListener('click', e => {
 });
 
 const FINDINGS = [
-  ['crit', 'Counters are painted black, not cut out', 'The holes in 0, 4, 8 and 9 are black-filled shapes. On any ground other than pure black they read as black blobs, which you can see on the paper strip above. The 6 was already cut out correctly, so the set was also inconsistent with itself.', 'fixed'],
+  ['crit', 'Holes are painted black', 'The holes in 0, 4, 8 and 9 are black-filled shapes, which read as black blobs on any ground but pure black (see the paper strip above). The 6 was cut clean through instead. Every hole now has the same dark floor (#330793), so all of them read as hollow on any background.', 'fixed'],
   ['crit', 'Every file ships a black backing rectangle', 'All ten files start with an opaque black rect, and each one is a different width (41.2 to 74.2 units). Dropped onto a colored surface they show as mismatched black slabs.', 'fixed'],
   ['high', 'Baseline drift on 4, 8 and 9', 'Against a median baseline of 98.3%, the 8 sits at 96.0% and the 9 at 93.9%, about 3.5 units high on an 80-unit artboard. The 4 runs to 100.0% and touches the canvas edge, so it can clip when rasterized at fractional sizes.', 'fixed'],
   ['high', 'Two artboard sizes in one set', 'The 0 and 4 are drawn on 48 × 48, the rest on 80 × 80. Anything that reads the intrinsic width and height attributes renders those two at 60% size.', 'fixed'],
   ['high', 'Cap height varies by 6.5%', 'Glyph height ranges from 84.4% (9) to 90.9% (4) of the artboard. In a row the 4 looks heavier and the 9 looks small.', 'fixed'],
   ['high', 'Widths are proportional, so counters jitter', 'Glyph widths run from 35.3 units (1) to 49.0 (7) after scaling. A changing number would shift sideways on every tick. The normalized set centers each glyph on a fixed 56-unit advance.', 'fixed'],
+  ['high', 'The 6 needed a redraw', 'A see-through hole, a lumpy hook tip, a hairline opening (2.2% of cap height), a gold corner in five pieces, a curved bevel and a lopsided crease. All six are fixed; see the Fixes section.', 'fixed'],
+  ['high', 'Hairline cracks between facets', 'In the 1, 4, 7 and 9, neighbouring facets stop a fraction short of each other, so thin lines of background show through: 1,950 px in the 1 at 20 px per unit. The facets on each side now carry a 0.25-unit outline in their own colour, which closes every crack.', 'fixed'],
   ['low', 'The 7 has less facet detail', 'The 7 is built from 18 facets where the other digits use 26 to 43, and its italic stem is the only diagonal in the set. It reads slightly flatter next to the others. This needs a redraw rather than a fix in code.', 'open'],
-  ['low', 'Slight curves in a faceted system', 'Every digit contains a few gently curved facet edges, and the right waist of the 8 has a visible curved sliver. At display sizes above about 200 px these break the cut-stone look. Worth straightening in a vector pass.', 'open'],
+  ['low', 'Slight curves in a faceted system', 'Most digits contain a few gently curved facet edges, and the right waist of the 8 has a visible curved sliver. At display sizes above about 200 px these break the cut-stone look. The 6 has been straightened; the rest are worth a vector pass.', 'open'],
   ['pass', 'Light direction is consistent', 'All ten keep the same lighting: cyan on the top-left bevel, gold on the top-right, violet on the right and bottom faces. This is what makes the duotone treatments work without per-digit tuning.', 'note'],
   ['pass', 'Gradient IDs never collide', 'Each file uses its own gradient ID suffix, so the originals can be inlined together safely. The normalized files rename them to d0g0 … d9g10 and strip the generator comment.', 'note']
 ];
 $('#findings').innerHTML = FINDINGS.map(([s, h, p, st]) => `<div class="finding"><span class="sev ${s}">${{crit:'Critical', high:'High', low:'Low', pass:'Pass'}[s]}</span><div><h3>${h}</h3><p>${p}</p></div><span class="status ${st}">${{fixed:'Fixed in set', open:'Needs redraw', note:'No action'}[st]}</span></div>`).join('');
+
+/* ---------- fixes ---------- */
+const B = window.FACET_BEFORE || {};
+let bid = 0;
+function beforeSVG(key, viewBox) {
+  const id = 'b' + (++bid);
+  let s = (B[key] || '').replace(/d\dg(\d+)/g, id + 'g$1').replace(/ width="\d+" height="\d+"/, '').replace(/<svg /, '<svg aria-hidden="true" ');
+  if (viewBox) s = s.replace(/viewBox="[^"]*"/, `viewBox="${viewBox}"`);
+  return s;
+}
+function afterSVG(d, viewBox) {
+  const s = digitSVG(d, 'gem');
+  return viewBox ? s.replace('viewBox="0 0 56 80"', `viewBox="${viewBox}"`) : s;
+}
+const FIXES = [
+  { title: 'Black wedges on the 2 and the 6', kind: 'bug in this page and npm 0.1.0, not the artwork',
+    before: beforeSVG('wedge2') + beforeSVG('wedge6'), after: afterSVG(2) + afterSVG(6),
+    note: 'The 2 and 6 contain thin highlight lines with no fill of their own. The files rely on <span class="mono">fill="none"</span> on the outer &lt;svg&gt;, and the code that builds each digit dropped it, so those lines filled black. About 350 black pixels per four-digit number, now none.' },
+  { title: 'The 6, redrawn in six places', kind: 'artwork',
+    before: beforeSVG('6'), after: afterSVG(6),
+    note: '<ul><li>The hole was cut through; it now has a dark floor like the others.</li><li>Hook tip: straight edges, a flat end and a chamfered inner corner instead of a curl.</li><li>The opening under the hook grows from 2.2% to 4.2% of cap height (the 5 has 3.9%).</li><li>The gold corner is one facet instead of five pieces.</li><li>The bevel on top of the bowl is straight.</li><li>The lower band is one solid facet instead of three overlapping patches.</li></ul>' },
+  { title: 'Every hole reads as hollow', kind: 'artwork', row: true,
+    before: [0, 4, 6, 8, 9].map(d => beforeSVG(String(d))).join(''), after: [0, 4, 6, 8, 9].map(d => afterSVG(d)).join(''),
+    note: 'The 0 and 9 holes showed the blue face through them (brightness 0.40) and read as solid, while the 4 and 8 were dark and the 6 was see-through. All holes now share one floor colour, #330793.' },
+  { title: 'Hairline cracks between facets', kind: 'artwork', zoom: true,
+    before: beforeSVG('1', '22 47 14 14'), after: afterSVG(1, '22 47 14 14'),
+    note: 'Zoomed into the foot of the 1, where the cracks were widest: the thin pale lines along the stem and under it. Neighbouring facets stopped short of each other and let the background through: 1,950 px in the 1, 288 in the 9, 64 in the 7 and 31 in the 4 (at 20 px per unit). Now under 10 in any digit.' }
+];
+$('#fix-list').innerHTML = FIXES.map(f => `<article class="fix">
+  <header><h3>${f.title}</h3><span class="status fixed">Fixed</span></header>
+  <div class="pair">
+    <figure><figcaption>Before</figcaption><div class="art${f.row ? ' row' : ''}${f.zoom ? ' zoom' : ''}">${f.before}</div></figure>
+    <figure><figcaption>After</figcaption><div class="art${f.row ? ' row' : ''}${f.zoom ? ' zoom' : ''}">${f.after}</div></figure>
+  </div>
+  <div class="note"><span class="kind">${f.kind}</span><div>${f.note}</div></div>
+</article>`).join('');
+$('#fix-list').querySelectorAll('svg.dg').forEach(s => { s.style.position = 'static'; });
 
 /* ---------- motion cards ---------- */
 const cards = [];

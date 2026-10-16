@@ -6,9 +6,11 @@ Drop your own ten digit SVGs into svg/original/ (named 0.svg ... 9.svg) and run:
     python3 tools/normalize.py
 
 What it does to each file:
-  * removes the opaque black backing <rect> and black-filled counters, so holes are real holes
+  * removes the opaque black backing <rect>
+  * recolours the black-painted counters to one dark floor colour, so every hole reads as hollow
   * measures the glyph's true bounds by rendering it (needs rsvg-convert and ImageMagick)
   * scales and centers it on a 56 x 80 tabular cell: cap line at y=8, baseline at y=72
+  * applies the hand fixes in tools/patches.py (the 6, so far)
   * renames gradient IDs to d<digit>g<n> so all ten can be inlined on one page
 
 Requirements: Python 3.8+, rsvg-convert (librsvg) and ImageMagick 7 (`magick`).
@@ -16,6 +18,10 @@ Requirements: Python 3.8+, rsvg-convert (librsvg) and ImageMagick 7 (`magick`).
   Debian: sudo apt install librsvg2-bin imagemagick
 """
 import json, os, re, subprocess, tempfile
+
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import patches  # hand fixes on top of the generated drawings
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, 'svg', 'original')
@@ -41,7 +47,8 @@ def main():
             vb = float(re.search(r'viewBox="0 0 ([\d.]+)', orig).group(1))
             t = re.sub(r'<!--.*?-->\s*', '', orig, flags=re.S)
             t = re.sub(r'<rect [^>]*fill="#000"/>\s*', '', t)
-            t = re.sub(r'<path [^>]*fill="#000"/>\s*', '', t)
+            t = re.sub(r'(<path [^>]*fill=)"#000"', rf'\1"{patches.FLOOR}"', t)  # black counters -> dark floor
+            t = patches.apply(d, t)
             ids = list(dict.fromkeys(re.findall(r'id="([^"]+)"', t)))  # order of appearance, stable across runs
             for n, old in enumerate(ids):
                 t = t.replace(f'"{old}"', f'"d{d}g{n}"').replace(f'#{old})', f'#d{d}g{n})')
