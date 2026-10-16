@@ -51,6 +51,9 @@ def main():
             m = re.search(r'<defs>.*?</defs>', t, re.S)
             defs = m.group(0) if m else '<defs></defs>'
             paths = re.findall(r'<path [^>]*/>', t)
+            # Highlight lines are stroke-only and relied on fill="none" from the root <svg>.
+            # Make it explicit so the paths render correctly wherever they are inlined.
+            paths = [p if ' fill=' in p else p.replace('<path ', '<path fill="none" ', 1) for p in paths]
             body = '\n    '.join(paths)
             open(os.path.join(OUT, f'{d}.svg'), 'w').write(
                 f'<svg xmlns="http://www.w3.org/2000/svg" width="{VW}" height="{VH}" fill="none" viewBox="0 0 {VW} {VH}">\n'

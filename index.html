@@ -357,7 +357,7 @@ function digitSVG(d, treat){
   const xf = `translate(${g.tx} ${g.ty}) scale(${g.s})`;
   const paths = fix(g.paths.join('')).replace(/<path /g, '<path pathLength="1" ');
   const filt = (treat === 'gold' || treat === 'graphite' || treat === 'pearl') ? ` filter="url(#f-${treat})"` : '';
-  return `<svg class="dg t-${treat}" viewBox="0 0 56 80" aria-hidden="true" focusable="false"><defs>${fix(g.defs)}<clipPath id="${id}c" transform="${xf}">${fix(g.paths.join(''))}</clipPath><linearGradient id="${id}gl" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".78"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><g class="glyph"${filt}><g class="xf" transform="${xf}">${paths}</g></g><g clip-path="url(#${id}c)"><g class="glint"><rect x="-34" y="-10" width="20" height="100" fill="url(#${id}gl)" transform="skewX(-18)"/></g></g></svg>`;
+  return `<svg class="dg t-${treat}" viewBox="0 0 56 80" fill="none" aria-hidden="true" focusable="false"><defs>${fix(g.defs)}<clipPath id="${id}c" transform="${xf}">${fix(g.paths.join(''))}</clipPath><linearGradient id="${id}gl" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".78"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><g class="glyph"${filt}><g class="xf" transform="${xf}">${paths}</g></g><g clip-path="url(#${id}c)"><g class="glint"><rect x="-34" y="-10" width="20" height="100" fill="url(#${id}gl)" transform="skewX(-18)"/></g></g></svg>`;
 }
 const tpl = document.createElement('template');
 function makeDigit(d, treat){ tpl.innerHTML = digitSVG(d, treat); return tpl.content.firstElementChild; }

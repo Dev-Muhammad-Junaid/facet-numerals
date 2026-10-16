@@ -52,7 +52,7 @@ export function digitSVG(digit, { finish = 'gem', title } = {}) {
     ? `<filter id="${id}f" color-interpolation-filters="sRGB">${LUMA}<feComponentTransfer><feFuncR type="table" tableValues="${ramp[0]}"/><feFuncG type="table" tableValues="${ramp[1]}"/><feFuncB type="table" tableValues="${ramp[2]}"/></feComponentTransfer></filter>`
     : '';
   const a11y = title ? `role="img" aria-label="${String(title).replace(/"/g, '&quot;')}"` : 'aria-hidden="true" focusable="false"';
-  return `<svg xmlns="http://www.w3.org/2000/svg" class="fn-digit fn-${finish}" viewBox="0 0 ${CELL.width} ${CELL.height}" ${a11y}>`
+  return `<svg xmlns="http://www.w3.org/2000/svg" class="fn-digit fn-${finish}" viewBox="0 0 ${CELL.width} ${CELL.height}" fill="none" ${a11y}>`
     + `<defs>${fix(g.defs.replace(/^<defs>|<\/defs>$/g, ''))}${filterDef}`
     + `<clipPath id="${id}c" transform="${xf}">${fix(g.paths.join(''))}</clipPath>`
     + `<linearGradient id="${id}gl" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".78"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>`
